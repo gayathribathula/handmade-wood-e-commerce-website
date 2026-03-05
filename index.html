@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Handmade Wood Crafts - Vintage Shop</title>
+<style>
+ /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    background-color: #1e1b1a; /* Deep dark for vintage pub-like vibe */
+    color: #d5c0a1; /* Warm beige for text */
+    overflow-x: hidden;
+  }
+
+  header {
+    background: #1b1817; /* almost black */
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #4e3d2d;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    color: #efa32a; /* vintage gold/orange */
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  nav {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+    color: #efa32a;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 0.2rem;
+    transition: border-color 0.3s ease;
+  }
+  nav a:hover {
+    border-color: #d5c0a1;
+  }
+
+  /* Hero section */
+  .hero {
+    position: relative;
+    height: 450px;
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius: 19px;
+    background: url('https://wallpapers.com/images/hd/vintage-aesthetic-stores-nxxxf6iyjqzz266w.jpg') center/cover no-repeat;
+    filter: brightness(0.35);
+  }
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #d5c0a1;
+    font-size: 2.8rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 6px #000;
+    font-family: 'Georgia', serif;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+  }
+
+  /* Categories and products */
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .category-btn {
+    background: #3e342a;
+    color: #efa32a;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+  }
+  .category-btn.active,
+  .category-btn:hover {
+    background: #cf8642;
+    color: #1b1817;
+  }
+  .container {
+    max-width: 1100px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: #2d281f;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px -5px rgba(207, 134, 66, 0.5);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 1rem;
+    color: #d5c0a1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px -5px rgba(207, 134, 66, 0.85);
+  }
+  .product-card img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #cf8642;
+  }
+  .product-card h3 {
+    margin: 0.8rem 0 0.3rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e3d3af;
+  }
+  .product-card p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #cf8642;
+  }
+  .leaves-container {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+    z-index: 0;
+  }
+  .leaf {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #cf8642;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    opacity: 0.8;
+    filter: drop-shadow(0 0 2px #653c05);
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(-20px) rotate(0deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  .quotes {
+    background: #2a241e;
+    color: #cf8642;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    border-radius: 12px;
+    font-style: italic;
+    box-shadow: 0 0 20px 0 rgba(207, 134, 66, 0.3);
+  }
+  .quotes blockquote {
+    margin: 0 auto 1rem;
+    max-width: 720px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  footer {
+    background: #1b1817;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #6f5a2e;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Handmade Wood Crafts</h1>
+  <nav>
+    <a href="#" class="category-btn active" data-category="all">All</a>
+    <a href="#" class="category-btn" data-category="gifts">Gifts</a>
+    <a href="#" class="category-btn" data-category="handmade">Handmade</a>
+    <a href="#" class="category-btn" data-category="kitchen">Kitchen</a>
+    <a href="#" class="category-btn" data-category="decor">Decor</a>
+    <a href="#" class="category-btn" data-category="furniture">Furniture</a>
+    <a href="#" class="category-btn" data-category="jewelry">Jewelry</a>
+  </nav>
+</header>
+
+<div class="hero" aria-label="Vintage wood craft background"></div>
+<div class="hero-text">Nostalgic Handmade Wood Treasures</div>
+
+<main class="container">
+  <section class="products" id="products-list" role="list">
+  <!-- products rendered here -->
+  </section>
+
+  <section class="quotes" aria-label="Customer quotes and thankfulness">
+    <blockquote>“These handmade treasures bring back nostalgic memories. Thank you for the quality!” – Happy Customer</blockquote>
+    <blockquote>“Perfect for gifts and home decor. Grateful for such beautiful wood crafts!” – Satisfied Buyer</blockquote>
+  </section>
+</main>
+
+<footer>
+  &copy; 2023 Handmade Wood Crafts. All rights reserved.
+</footer>
+
+<div class="leaves-container" aria-hidden="true"></div>
+
+<script>
+  const products = [
+    // Kitchen (includes Tables and Mountain Shelf)
+    {id: 1, title: "Tea Pot", category: "kitchen", price: 1200, image: "https://m.media-amazon.com/images/I/61S0I6fUEwL._AC_UF894,1000_QL80_.jpg"},
+    {id: 4, title: "Tables", category: "kitchen", price: 650, image: "https://www.casafurnishing.in/wp-content/uploads/2022/11/round-dining-table-4-seater-1-1-1.jpg"},
+    {id: 20, title:"Wall Mounted Wood Shelf", category: "decor", price: 2500, image: "https://m.media-amazon.com/images/I/71bMzb9DYcL._AC_UF894,1000_QL80_.jpg"},
+
+    // Jewelry
+    {id: 5, title: "Jewelry Box", category: "jewelry", price: 1500, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj-aCRvMUkDOn13zCoUp9At7vz5PtLtlsgpA&s"},
+    {id: 6, title: "Pendant Necklace", category: "jewelry", price: 900, image: "https://i.etsystatic.com/6292388/r/il/7c8fcf/3191938690/il_fullxfull.3191938690_r6lf.jpg"},
+    {id: 7, title: "Earrings", category: "jewelry", price: 750, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1LKGBei-b_V-_QMWRvR4xHmcez5htFb6VKA&s"},
+    {id: 8, title: "Picture Frames", category: "jewelry", price: 1200, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTHOHw-JlvkerhsU3C3e-Op8jXXjz3yywY_w&s"},
+
+    // Gifts (moved Personalized Bookmarks here, plus fixed Cute Gifts image)
+    {id: 2, title: "Personalized Bookmarks", category: "gifts", price: 800, image: "https://i.etsystatic.com/27950544/r/il/6282e6/3409239186/il_fullxfull.3409239186_6jis.jpg"},
+    {id: 9, title: "Cute Gifts", category: "gifts", price: 600, image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFhUXGBcYFxUYFxgdGBcYGBgWFxcXFx0YHSggGBolHRcXITEiJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0mICUtLS0tLS0tLS0tLy0tLS8tLS0vLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAQIDBQYABwj/xABAEAABAwIEAwYEBAUBCAMBAAABAAIRAyEEEjFBBVFhBhMicYGRMqGx8EJSwdEUI2Lh8ZIHFSQzcoKiwkRjskP/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAsEQACAgEDAgUDBAMAAAAAAAAAAQIRAxIhMQRBEyJRYXEygZFCUqHRFCPw/9oADAMBAAIRAxEAPwDNGs/J3eclgM5SbA9BsrPgvHKrXNY52Zhe0kOvBBs4HmDdVmVNcVyzgpKmXRuX0e8dUqsY+oR4a7CPikSH0zpmGsaqswmNa2hXoF12tPd5rFw/CPMGFqez+MIaGVGxna2oDzJaJB6rzbirstaqyTLHuynoCSAvPjiuKd8c+trYzNRwck1Kryzw1JbOxmA8+doRPEm0KAlwYxo5gLPcC4+QyoXk5aTGFnnJt5koHCVadaocRxKo1smKeHJ2/M5qcoTk93sq47hwRcY7WYcf8rDU6p0zOYII8gF59WqAuJDQ2STlGgnYTsvdeHcQwdQRQyGLZcoBHpqmYvBYesC2pSYRp4mgex1lXHroYfI4v7uwPCwnArS9ruyn8Me8pkmiTpuw8idx1WZLvRepiyRyR1R4GPI5pM3JNKUt3WgHSmlOPRIRCQCJCnQkJjRIBpCa4riVwCAJKZCKpu5oVgUmZAEtQyo3FdmSSgBFIxNASpMB+ZSNxJG6hlMglKgHPeSVPh2JKNBG0mQhjSG5VymhcpGaN71ccL7LYiu3MAGNOhdN/RBcBoipWGYeFtz15BekNa8tlzm02gfETFuvJYuRE506RBxSgW0WXHeNphpjQZYuPb5rzXj2Fr973uQuNR0+HnutjjOOUqc5nF/VtxHnyQmD4nh6rXeOWamAczTPI39QvLxZpyySlWwlsZXDsxEPp0WNkXl2oJ0PUi/kqbG9k8XJcW53akzJnVaGM1Y5XlsjXcxs7qrQVKjBZ0g81pj6mcFSoaPNaGMq0XAOBHQyCPI6ha3hval7hAqNd/RV+gcL+6M41hWVxDwM/wCE7+SyuK7Pubdsr08UodRC5xQOJpMXx/MDTr0SxrhBIOZt95WFdhnXEggT4ugV3wipis3dtaKg/K6I5bqXi+Caz46VSi47RLDeNRb5rfHhxwtQ29heZGZpP2jVOZFwZVhUw7miQAf6ggalIQSSSdv7q2qHZG102JsliCRqog06mY5qSYjKZSGSPw5bZ1pE3UM2iFLVqF1yZUZCAG5VyVJCVAIlBXQlhIDlyWFvuxHZBjqZxGKyjM13cUXx4rD+Y9p1bcQOs8lMpKKtjSsz3CuzVSrQdiSRTpghrCReo4mPDceEbn9iqjEsLCWnUGFqu23GKtR2QMFOkzwU6YjKBFgI1018tFlaVIlOxUxjGyjKFFPp4ZEMYk2Ukc2mpAxK0KVgUgR5FyIypU6AsuznalmH7x76Ze+2QAw315IPjHaDEYp01Hw2ZFMGGD9z1KqqdKVZYPhbn7KdK7Cpcm2o4ei+gAYhzbwR9ehVfh+HspjwuBThhXU6IBBgWB2U+Jw+am0lrTIEfYXmf40lJxsajZWvwzQ/NmE6+SXEcSps1MquxdC+rh0DjCqsfSaBa5BvdWumT5Y/Do0HZvF/xWMYyIaA53sLfVarG8EDXXmDMeayP+zBn/GZiQA2m4mepAAXo/Gaxc5giG+Iydfwj01XZKUcOB6dn2Kw43OatbGO4jwJ4E0wCd9jH0Puqj/etaicjwQPyvbY++oXouGaoMZhWuBDgC2dHAEexsuGPWNu5L8HpRgorSuDC/8AB1vipmk789IwPVpsgsZ2TL70atOr0+B/sbH3Wqx3Zig+TTGRwJBNM2BGxY63sQqfiPBa1J5NEF7Pw3/mC15FpMz8Mrsx9Wnw/szKfTY5dqMTxLhtWn4ajHNPIgj/ACq8NW9Zxx4mnUGYbsqNn5G4UOI4dg6w0fRfzb4me2oXSs0e5zT6Oa+l2YdJCs+KcK7p2UVGVNbtmbGLgqvLVrzwcrTTpjISKSEkIFYwBPaF0LTdj+zgrzXryMMwwQPirP2pM6fmOw9xEmkrZaVh3Yzs43KMbiWzSB/k0jrWeNCZ/wD5g+/lYmdquMOgyA51pM2pgaNbeZ8uZm5RvH+LwcxhpAAa0fDSZs1o56fcLB4rEOqukzlGg/U9Vgm5OzVrShHudVdmd6DkjaGGASYZkIoVG8wtKMxBSSmipGPGxCIY1AAQoqRtJG90mupoAH7tcpsq5MC74Z2b0kStbw7gYEWV3QwYai2tC0SomwKpwpj2FjhIKy3Eh3f8oiMth5LdthYrttigXNgbQTv0UZI3uhwdMyGMI8SrMPhm1KrKbpDXuDTET6Tuj8TXbuR1VP8AxjW1aZbJh7TI28QXPTo6E1e563wHhuFotyUQGnm74ieZJ1WabwbiWHrVKlYuxNN2j2EktEz8B+HybOitq7OilwvF6lIWfLfyu8Q9NwuBZLTUlyek8FU4sdwviLH735GxHnKquN40d+ad4cMO0a5QXVzM7AkNPsr1mNwlf/msyO/OJ+o8Q+aD4h2Ue497h6rarSA17HGQ9kkgZm3a4EkgxZTjgkzPInQCziJplzr5P+MqOA/EKdRrW/qr2owEXAWBr8NqsDadWliC+4zue0Umhz8zrg/zOcGZK3IxIOhBUZ4pVQsbfcGxHDKdQeJrSOTgCPSbt9IXn3aOiyhiDTYIGUGJJAJJ0zEnYakr01sLzftHwjFVsU99OkXMJDWuzMiGiDqZFwVp0s3qpvYuVrdGexvC6tQCo3ebHe50KrKj3MtUaR5/oV6LgqTqTBSquZYR4SLdCDr5o2p2fZVbIAI6QR7E/su6PWRWzOXJ0UpeZM8vaGnQ+h/dNdThariPYkyTTseQsfY6+koHhHZDE4isKIloF3vIMMbzI3PIb+UkdMc0JK0zjlhnF00J2R7NvxtWBLaLI72p/wCjObz8hfodnxvGihLA0MZSllFoIyhg/FzLjqec30va8QxNHAUBQoAANHqTu5x3cdyvOMfVfXfLpy7deq59Tyy9jXSoL3BsViHV3yZibD9T1U9HDAKahhoRDAAQSJgiy3SrZGTfcZQwL3Hwsn0Vzw7gNcHMKYB8h+q0nB+P4AQL0z/WLe4kLU4V9OoJpva4c2kH6LoUV2MHL1PO63Ziq45nMBPt9EPV7Pubo1zfI/uvUnUkJXoTshwDUeVvpVWa380wVxuIW74pgQRosjjsDBWcoUUpAedvNKm/wqVRuOz259NNa1GFqiethAGJrQFj+NUS8kraYimqjF4YHZS0CZgMRg+YVbiMC07LZY3CqorYX3Ulpl3g8XmY0zNhpzhRcRY0gHlrzHKVUUWlptY80a3GbPAI5jX9vovNn0sou47nq4+rjJVLYJqUMgzNuI2+qnwuINntcWujYwRzQDHu0Y6W8twPVdjsM57RBh4nWRrl0I38PzXO470zqUtrW5oqXaB0RWY2q3no71/wkOCwla9J5pP5aD2Jyn0MrIuxVakSHgkS0AmdIMkOAjWNZ3U9DiDHBpJyl0xNjZxBvpMg2TcZfJK0S9maX/dtdhglrhz8U+0fqsz2sZUoUMzCSJcXuvIkz6C59la4bidWnZrszfym49AdPSEYOKUqoy1GxNjbM2/MG4Hus4tJ2X4bSZ4xU4g4mSStH2W7UvpOFwRyO60WP/2fYWr46TnMH/1uDmezgS3ylC4fsFh6UvfUrPDQSQMokATo1ub2hdks2Jr3OWOLKpexsy7+LYx1JgDnWPLqTyjmk43xCngqXd0zLjqd3OPL9BsqJvayjh8PTq07Oe3LTo5hLWk6vuYJsbm26fgKOZ/f1S17z8IaZbTB5Hd3X2WU4+H5pLdjT8V6YvZAD+AVKw7yo+Hm+WJDRs3z5/ZVViuB1Watkc23+WvyVpxjglSrXFeliSyI/luzQIt4SDYHlHNF9o+NfwtNtR1M1JMGLNH/AFE6TtbZVjzzVKLTvtwLJ0+N25Jqu/JkjRKTKVqsFiqGLpiplAO8xIPmNUDiMJT7002mXABx/pB0BPM6x5c11486lLS1TOPL0zhHWnaKE4cHoUgo1GHMxxB5tJB9wrapgiFCaZC6TlomwXbHF0rOfnHJ4B+evzWgwf8AtCputWpFv9TDI9jBWXc0HUIWrgAbgwVSk0TpR6QzjOErDwVmzyd4T7OVBxamJMQfJYmvQeNpVdXquFsrgm52LSbCFyw3fHk75rlNjo+qHhQvCJIUb1ZIFUCBxDArCo1CV2oGU2Iw6psThr6LR1GIOrRlSxozb6UKEs5q7r4I6oV2EPJSWmVD1NTxbh1HI/uiqmCOyO4R2afV8T5ZT57u/wCmfr9VlkjBrzmuOcovysrG4tpEEx/S64+aixNKm4Zbs10jKZOYz632WwxPZehEBhG05nSfnBKz2N7OVad6RzD8p1+/ZcGmF+V18noRztrzq/goqWFqUiAHFzd4Mtg/06jXUDndT0caDTD6gA8OYwOQkxBJQ9es9hgtc08tvY/okbxBrmua7RwIPqIPkUpwf6ka45x/S/sWeHxJ+Km+fWHC/P315KxoccOjwHf+LvcWPtKyv8B4g6m/cW0hsEQI1s53unO4hUphoqNnwMJJ1LpaH30MAz6LPwr+l2aeL+5Ua2rhsJXHwUw/m5rQ7/VvrzWM4t2VxVOv3lCsQ2QQ0ue3KLWGWxHt+qPo45jtHQeR5wDAP3oVY0cc5tptyNx6Tp8klOcH/YPHDIiv4p2gbhmsNRr3EyBGXaJk2AN9ArLhPEW4innpkwdWu26G8H3S1TSqDLUY0g7EBzT6H+6r+K8Ro4OmG0mtzGSxjRDb/idEWnbU/MJVNaUvN/ANuD1N+X+SXj3G24ZuRjW964SAAIaPzOH0B1VR2TEiq8mSXAEnUkAkkn/uWYrV3OcXvJLnGSTqStZ2bbloNP5i53zgfIBel0+JY/k8rqczyfBb1ghH0pUxcmnVdJyAr6ChNOFYprmoGVzx6oephWu6KzfTUT6SBFd/u5vMey5H92uQB7e4qMpHFMLloSMqIeq1TucoygQDVYhntVhUahzTSGAObdJ3HzRraBcYaJP0HMq3wOCay+ruZ+g5LLJlUPk1jByK/A8EHxVBfZm3/d+3+FZVKhbYj9v7KZ1Y3DfFaY0Hv6bA+iEfXmMt+YggDpO3LXcHZcU5uW7OiMUhe8Hl8x/hD1aQP3b0TcXRZlcQQDB1N5i3xaKvruLXXyiHOM8oJIzDreB5LnlGzVMTiHDmvHjaCPvdZPiXZUG9I/8AafoDrHnK2FDEWzEGP6Todxl8yR5QnBmYE2i8R/a3yvfaCoWSePhluKlyeW4nB1aRuCPPQ+uiRvEDo8fL9P2XoteiHAizunTpG3lbZUOP7NsddvhJ2i3t/harLjl9aplJ5I8OzLPwtN92nKZBtpObMfKbj1UmBY6m3KYI6aaAW9p9U/G8Fq0zMGBuJj13H0QjcQ5utxzC0lCTjs7RUMsNXoyzZVB6Hos12oqzWaOTB83OV5SxLXLKcdq/z3jWMo/8QfqSlgh5yuqn/rBnuRvCeIvpeGTl5HQKvaU9d62PJbs2OF4mHao+lUm6xmEqnRaDh9QhUmTRdBqQtXUXSp8tkxA5aoXH2RjqagqUuiAILLk7uvuVyW4HslRsoSpZGOKHrBaMSBHPSCokqsQ7gf8ACLCghxUuGwRfvDefPyU+A4fvU9G6/wCr9grQm0WjlP0XPkz1tE0jj9SBmHa0Q0R+vWeaAxLxf4gItb4rT+nTzRmIdEAGZ2vOUaxAO9vVB1WwZIeGgTbNYjfxC39lx33OhEJdMZiDawBFjvcemthG+iSqXOgEzp4RaRpBiCOn67uptdrLczrQcvOLQRPoLwn0mwJG9wDsD02Jm8fSFLZSIhTcJsD1Iv5zrpGoF1C6hO87a89fw7o0VAdfKD+6bWZ8p6H1WTZSKrE4EHaIsSB9f7xvqTYSuXgEmzRYkR5eIb+Wnmrh5I1vy5joga4BI3ttExZsctS2PVZuzQEZjAARBcJ+KCLzF/L0/YzLm+KJjUH3sRb/AAhH4BrjA1gmdwBbQSJ9FDVZUp+IkFo3A+txeOYWckmUibEYaNLhUmO4TTftB5i36QfW/VXzMUPPaRr6hLVa13L/ANvZTHJKDtFuKkqZg8ZwBwNrjpY+2/pKy+O7PnO5xeSSSYI06L1mpgztfpuqnG4LNZzQY52PSDqPIyu3F1v7l9znydPa8rPM/wDdJGqczBLYYjhEfCf+10A+h0P9kE3CwYIg8l6EMkMn0s45QlD6kVmE4dF91Y06cI5lMBPNJaURZHRqQrGi9A90UrJCYiwcEwtUTaykbUEIATKOQXJbfZXIA9QL00vSFNzKyTu6LjlaJP3qjsLhG07xLvzcvLkqitxXuXBrGd5UeIFMGCdSDO12nzh2zSQH2XxGMqVq1WvWYKbZZ/DtbGU2OZ2bxNAHPXaBE8ueUuOxtjSe5rDB/f8AdML4VXwvj2Gr1H06NUOewS4DSDaQdDysrDNz9tlzWa0RYl8FpgmzhzIks+/ZDVq+YOYYFoJn4cwMCHZduqIxVMmwkEQRfXYgHqJsbXCrT+ePe8i0u8W+nLQXAlSUiUVSWg2ygi2joGkiLmLwOimoP8IB1EAjfTY8t/UIWGgy2HC8g9ZPI77XP1CEyMwIn26mRNhqYvvBupZSCqlMHr9fKN0M8EaafTy5JhxBb8QIGu8wIvBsNt0jsaDsTsDa2msSYuNllJMtDy8Hn+v91W4umXHwiYEW8wXTINxlA8ydIRFYlwtG8gbERY7zBBtB84QnfEAQZFvFcADYA7R0tcawoSaLIQ92Ygh1hciSRvHhtGtuYXNxYcHEuANwIJk2sDLjJOm6c9gPhESNXXmCd9nW53tA5plSkBBzHIy+l5EQ3SZk+egvKl0xolxmHZBeLf1N3PKJ+9SqZ8lwc52hEOaZYeQOU+ZvE6wbRJWxJLtYEEGA0ggj4ZMtnWQSDsNyZKVd2UgnKIEy4nLH5o8TW9DmHkiMHFWNuxWcSIgOGbm4HQHS3M7C2uqKe5rhpP1B5H72Q1TCsgGQxxFo2tGYt2JOwiNOchFj2EOdJaZGcOcQbcnXaRE7DzUSUXwUmybE4MkS2CDt96oCpQixHofuQrNuKkfm66EffonjK+3xW10Pss1JplUUFXDDa3nofIqLKRMq4xNJrQXTDQCSTsBck+Szrca2oczfhOnlt5HeF6vR5pzbT3Rw9TjjFWgsffomlqa16kXoHIRjWEuZKW+iY5IfJJ3p5rlH6D5rkWB61UFlEUQ9MLVoIyWDe59OtiJcHPjLBEhhDHkNP4SBlYetEn8RmlpccGJdNd5fSZLe+ptAqa2NQCZEibTEAgS4Fth2l4C9tGpTo1Xd25ri2gQTDiCA1rg4SC6LPDwNbQIxj2UaNIvZnbXkh0hzTIMMp5XgF5yZQGtB65ZlYzg3uuf4LjJLZnoPDuJ08LTcKNNlXOcxq0rTIMCoAJzhrdBPN2QEuVn2VxGKqCo/Emi6m4/yu7m4E5iSdRtrHhMWufK+B8Wq0/5gzUnXGeAab9M4d6tAnSGtjSVf4fioxBLXPbhg8eLLm7qq78zxOVs312EkuzNy80oduP8Auxsn3PR8DxGlUzd1UZUyGHBpBIN7H2XV6JN6Z1uWxfW5BtB+5Eysrwuvh8BTc3uAyqYLi3xCoDmykPnNlvlaw+LkHXKsuyvE8RiG1H18P3IDopnNJcAXAzpoQLxfqsZRaLTTDzTy+JrtBBaRptEaja2pso+9kkuBixLgN506wRruegCNqAO+IAxIzDVs9RcGNwo6lAx4SLaHLp7EKNXqVQDVqB0+MxtIu4Olmh657xoWqBtIy0B8E5TMCB4H2PXwj5IltEtEZWuE2k3iABbKdgNFzQSZAaNLA8i4GYb12lS36DSB69AtkuJIPxExAOxEcjqOUpH1C5psGASDGsb7RB8uvQnOa46loB2An56T6IV+DAiNbfFzFgfPqFm5LuWkQhkCR4WRJcRod49B8Wlt7wLUxABhzTlAs0yDBHxXEExNibTzmIcXjnS0BstJ8JLsrX8nZuU6c9beGRxiBHhcS0wYfJDepBEmIJzNO1+aSh3ZVk7KAc1woua4EQWwA8AaXgyNdQRyKGpUcrQ5xaB+EScrnDlybabb3FoR4pASXxDZzOEk/wDS0xmuNZm1puYIqAmHNf4TFg1pB6xFxpodAs3Otikit/inTIqOA1IyiB6QCeW5khEMxBHiNnGwJvA3Djtzc64t0C7ug5udzpY24N8rj+aCbN5D1vZADDuLhBe2NCYIynQBxJk9b7wRolUZBuGPwjagzRkPNl2+kbdR68kLUoPYQXCRs9p+/wBER3hH9PlofQfUXVD2x7RGgyG/86pZgGg/M8jp9SOqzhGUpaYlOSStme7c8ezH+GYZaINV3M6in+p9BzWe4diy2BP3qgAepPU7k6k+aO4dhS93QL3cWNY46UeZknrds1eAxGYKxaJVfg6UBHCV0GRIZ1lREDlspA5Ncz6IATL5rkv+pKgD1eVyaHW3SynYAWIpy6Tss12i4Z38sAi0ZoEjefota5qDr0rEjVDA8f7SYKvSpikXsysIbLZaHSQGZhBMgeIjMBbdQveMPSGV+cugup6tBcAYEfBawHy1I9IqcMDi5z+uvzWU4r2cY85KTcoBlt3FrACHENBMNzGxDYspcVJUxptboE7PcaLR8LXNMzRqCxkAOcw3iYaBEiGi2q02E4u+o00cI8sABijUd4mwId3bwc3dgugAOklpE0wDOJ4thKzabab2gGmGgEZcpiGtLYJc5xItmygaxIBUTXmlSp94cwdlc3L/AMxgsGlp5ARe1+phZSg1vyaRmn7HpPYnCUMIyse9qd69wNSnUJLwZdkhgEvc7m2ZOhMKz4B2mo4t9RtHOHUzcljg3UtgkgQ60xyI6rz3h/aEVQP4guq0xLRUbHeMBEQfMOOaIdAaCXXB1vDuLChT/lllem4lzXglpF2tPfNa0wGggWANgMsrmniu63ZrGdcmqffUQdj1/dQ1aV+R52j1Wc7J4nF1q1apWqsdQI/l0g0eEkyACNCG6iXXcL2K0AxtMVDRbUaagbmNEuGYA7xqBouSScWbxdkb3lpvbrt5Hl/f0VZxXigEMdlaHWAeS1lR1jkL8pDRB3+I20zK4yAyBt+EoXEUQZbFohzHQRHLlChNXuUZ+jSIMeIPJJeHCajwZ2LslVukFvLQKanhXuIgi3iEF0Bp/HlcPC61mmbgnQXR/Cg2Axzw1rg4USRkDgbFpILmDchp22R9dry0BhBNy+SWve4wJD2Hw6C0EQALAKpTCgJ2KDTlD2sgwG1GOs64Lg4kS4zEiZneTMr6rJvlaTDXgGz3G4ptkjxEXO8QOokoYaq5mZ0ZvhuwNc2DdzhneHEbRAM8lBicCcvhNhOomZkuDgfjnU6GVD0t0UrCcQ/OQGmBzix6hw3BBtmaRBN7AziiA2I8yNepcOaC4ecjSLEWtJhoiIaCTlHRFNqgkwdNj6zB2WE9tlwWgLi2Kp0KT6tQgMAm34jMBo/qOg814zxLGvr1HVH/ABO0GzG7MH3v1V5217QfxVXKw/yaZhv9b9C/qNQOnms40e69Xo8GiOqXLOHqMup6USYajmIAWt4dgcoAAQHZ/A/iI1Wqo0I9iu9I5iEUo8k4i3JTuZCiewSmIbGi4G3ouco+880ASW5D3XKPMeYXIA9TDkrnqo7P8S7/AA9KqfiLYd/1NJa75go/vUIGEZv8JHs5QkY77/RPc7bVMAOrhxE7/JV/cBoJi9/sq4KgqtsigMhX4Z3rvGJF5adDaFmOO8Aa0OZTa4zJDJHxEHQ6mBIGYmJGkL0d9A7WVaMD4pdqigPK8TUyMDaQyPaTnFi4AElwLZ8LdgX9IG6K4TxKqwh892Ya6Rdh1LWuBEAQS6+7gQRAWt4xgO8eBFpHnAuPn9FkeJcMrMHdujIcriRZrgxjGnMJzT4B4QIv8XKZQTKUmjW4btG10/8Ax67h4ntg0qgIygwTAeXFoBcRH5jBCP4Pw6nRxgr1mZKpDg2oXOcxxdDWtDzckNEePxOLib2XmdBppU87jIDZLToS7NAZGhDRMaeJXPCe0j2tNJrnOpGzqLtWgES1h1aT8MCwkmxErCePs/z/AGaxl3X4PReIdqmNxVHDNpPqCoYNZpgNMuFhHjAIMkWEHkYvqrbXEj8w10Cw/AKjHlj6Dw6owAvw9SGOENyTTImGhsgC7YMEiSk7RcfxFUM/hH91cE5ozOBIDfzDKXG0AhwaTmAjNw5Ome2nj17HRHL6/g19Whb8w6aj90G5hHMjXqP1VjVqBrS5zg2BLnmzdLm9gNVCcrwHNIg3DmmWuHPquO2uTdAbcaZ6aTvy9UW2q1wm3n16ja6CxGHg3sfzDT781A8FvMcnD9fca2RSfABuKw4OttPEDqsF2/44ac4Wm7xuHjcPwM5dHEfKea0XaLtCMLQLzBcbU27PceY5DUkcl4/WqOc5znkue45nOO5N/v0C6ukwanqfCMc+TSqRw+WyO4Xgy93RC0mSYWu4RhA0AQvVSOAscDh4EfJWLIA++qjptgKTz8lYh2WVFUHRSl3zUT3wgAd7VCU19cykZUQA/L5e/wDdcou9HNcgZof9mFYjChjjN3OvtmM25arbd2Nvdee9j6mVgA5BbqhibJx4Bk5BTHVoSlybklOhHComucnikmliKAjcDH3ohqlKZRZ+/wC6ieEAU7qEEz7qj4lgzUdH3a61zmA/oqx9GHQUAYHjHAWsuCRIkjU2vDXEy0ExYchpCzZY1jYAl4nSwa8uLQSfwgBrjGvi9V6fxDDZ3QRZUfHuFtN8oJAsY/09DEkjzSaAxtLFPLZcM35ags4j4SYGkkxIvEnZa/h3aJphuKYKjMxLa9O1Rjp1sZMdIIAiHKixuAewAtHgAAGX4rNc0NvYDxHxddtVUYfCubmObLqMo0IAl7j+YyYHU2Wbh6FqXqekcSqvxVItzOrUNnM+ItDnAuqNbZzyWw0RYS4tBIA0HZrJRwVJuZuRjJc4kZRN3X0gGRG2i8o4Txx9GpNOpkqAgHek/wDovYgCB9DK1FPjjMS8B+XDVCQHEE92+pD/ABuFrtAbBOjnjxHKAuXL06mtK29jaGRx3e5rOB8fpYvvO5Dx3RAc14AMGcrhBNjlOvJTYp7abXPLsrWtJdNoAvM/5VTw1jsDTe19B2WXO7yiGlpGoDgYc2BtBFtViO2/at2Kd3DAWUm3fMZnkXh0SAByk31vYcb6WTyUlSN/GSjbdlN2g4w7FVjVNmCW0mchzPU6n0CAY1IBPlt5KVjV6kYqKpHFJuTth3CaMu8lscG2FScFw0CVoqNPT3WiJZO3ronB3NMCaExErneqY8SmZlweJEIADqsUQRr2A6WKDeIPukMik8lydkHMrkwJuC1CyIOwWy4dxBrovB5bHyXn3DqxEBa3hbCLkG+ylDZr6Sna5V1GtAG4+YGyKbVkWWhIQ53uo3dUwmyQu5oAV75THN3SkpsoAiNlDVbKmconFAFdiaV7aqtx1CXX0t6q+rAIOqwGP2+/uUAZ7iGHEQOf0WexXCAWTuNvwuGZpIdvBy7LZ4zDoWvSGXRAHnw4eGue+oM2VpMRaTcgDbYIN9fu3ObGZrRD5+jepcXW0W3dw8EOkSDMhZ7GcIaHgiYzyAdBEm3qVMlapjTa4H0O0dWnRfSFctY5uXJUBJZP5OUcpy9Flw4aDTc81rcTg2uF2oB/DWjQKFGhuVlSxWPDsLJkhSUsBLoV/g8JlGidCJMLSiFZ0jz+/ZQUqalA9lQieZ++SRzY2TWvv92XB/0lADXqEGN1I8eqiCAEB0Sed9fRK8dITDMoAb3DfzH5Lkk/d1yAK7hGrV6Bwr8Pl+oXLkolSLGrv5fqpmfGPI/RIuVkhP7FOfp98iuXIAg5+R+ic9cuQBC1Mqbfey5cgCCqoKn6H/8AISrkADYrX1/UoGt8Pof1SLkADs0Pkf0VNiNR5lcuQwIsTp7IGp9+65cpAnwOp++auPw+30XLkkNj26DyKf8A2/VcuTEPGnp+qY3U/fNIuQAwa+31XMXLkAMd8XqP0UdT9/ouXIAhXLlyAP/Z"},
+    {id: 10, title: "Chess Set", category: "gifts", price: 2500, image: "https://enterro.in/cdn/shop/files/Size_047dc4d9-4dea-480f-a4db-f2cd8ff9189c.png?v=1732780341"},
+    {id: 11, title: "Personalized Keychains", category: "gifts", price: 800, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaKvSxJpGjfRN_hMQTVD-rbOSqZqY_Z8Tzxw&s"},
+
+    // Handmade
+    {id: 13, title: "Clocks", category: "handmade", price: 900, image: "https://i.etsystatic.com/18056386/r/il/066d24/2363896414/il_fullxfull.2363896414_9h7x.jpg"},
+    {id: 14, title: "Candle Holder", category: "handmade", price: 1100, image: "https://i.etsystatic.com/11600571/r/il/0ddc17/847056982/il_570xN.847056982_95ur.jpg"},
+    {id: 15, title: "Lamps", category: "decor", price: 650, image: "https://v.etsystatic.com/video/upload/q_auto/kubec-video-etsy_qmxq62.jpg"},
+
+    // Decor (vase and shelf)
+    {id: 16, title: "Decorative Vase", category: "decor", price: 2000, image: "https://www.nestroots.com/cdn/shop/products/wooden-serving-tray-tea-coffee-serving-platter-gold-brass-tray-metallic-silver-decorative-tray-for-home-gifting-mdf-table-tray-2_88c2fa78-d260-4a47-acbb-7df8c0e5ea2d_1300x.jpg?v=1651053871"},
+    {id: 17, title: "Wall Mounted Wood Shelf", category: "decor", price: 2500, image: "https://m.media-amazon.com/images/I/71bMzb9DYcL._AC_UF894,1000_QL80_.jpg"},
+
+    // Furniture (includes Chairs and Tables moved here)
+    {id: 12, title: "Chairs", category: "furniture", price: 1300, image: "https://homeglamour.in/cdn/shop/files/DorisChhair_3.jpg?v=1751739419"},
+    {id: 19, title: "Wooden Table", category: "furniture", price: 5000, image: "https://www.casafurnishing.in/wp-content/uploads/2022/11/round-dining-table-4-seater-1-1-1.jpg"},
+  ];
+
+  const productsList = document.getElementById("products-list");
+  const categoryButtons = document.querySelectorAll(".category-btn");
+
+  function displayProducts(filter = "all") {
+    productsList.innerHTML = "";
+    const filteredProducts = filter === "all" ? products : products.filter(p => p.category === filter);
+    if (filteredProducts.length === 0) {
+      productsList.innerHTML = `<p style="text-align:center; color:#efa32a; font-size:1.2rem;">No products available in this category.</p>`;
+      return;
+    }
+    filteredProducts.forEach(product => {
+      const productHTML = `
+        <article class="product-card" role="listitem" tabindex="0">
+          <img src="${product.image}" alt="${product.title}" />
+          <h3>${product.title}</h3>
+          <p>₹${product.price} INR</p>
+        </article>
+      `;
+      productsList.insertAdjacentHTML("beforeend", productHTML);
+    });
+  }
+
+  categoryButtons.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      categoryButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      displayProducts(btn.dataset.category);
+    });
+  });
+
+  displayProducts("all");
+
+  const leavesContainer = document.querySelector(".leaves-container");
+
+  function createLeaf() {
+    const leaf = document.createElement("div");
+    leaf.classList.add("leaf");
+    leaf.style.left = Math.random() * 100 + "vw";
+    leaf.style.animationDuration = 4 + Math.random() * 6 + "s";
+    leaf.style.animationDelay = (Math.random() * 10) + "s";
+    leavesContainer.appendChild(leaf);
+    setTimeout(() => leavesContainer.removeChild(leaf), 10000);
+  }
+  setInterval(createLeaf, 600);
+</script>
+
+</body>
+</html>
